@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakay</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url("https://wallpapers.com/images/hd/4k-ultra-hd-dark-teal-highway-7zbd70j0uhg7udmp.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: #e0f7fa;
+    }
+
+    .navbar { background-color: #00796b; }
+    .nav-link { color: #b2dfdb; }
+
+    .container-box {
+      background: rgba(0, 77, 77, 0.85);
+      padding: 30px;
+      border-radius: 15px;
+      margin: 50px auto;
+      max-width: 900px;
+      color: #e0f7fa;
+    }
+
+    .btn-warning { background-color: #26a69a; border-color: #26a69a; color: #e0f7fa; }
+    .btn-warning:hover { background-color: #009688; border-color: #009688; color: #fff; }
+    .btn-secondary { background-color: #004d4d; border-color: #004d4d; color: #b2dfdb; }
+    .btn-secondary:hover { background-color: #00695c; border-color: #00695c; color: #fff; }
+
+    footer { background-color: #004d4d; color: #e0f7fa; text-align: center; padding: 15px 0; margin-top: 50px; }
+
+    table { color: #e0f7fa; }
+    th, td { text-align: center; vertical-align: middle; }
+  </style>
+</head>
+<body>
+
+ <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="home.html">
+      <img src="sakay.png" alt="SAKAY Logo" style="height:50px; margin-right:10px;">
+      Sakay
+    </a>
+    <div>
+      <a href="home.html" class="btn btn-secondary">Home</a>
+      <a href="schedule.html" class="btn btn-warning">Fare & Routes</a>
+      <a href="registration.html" class="btn btn-secondary">Registration</a>
+      <a href="account.html" class="btn btn-warning"><i class="fa fa-user-plus"></i> Create Account</a>
+    </div>
+  </div>
+</nav>
+
+  <!-- Fare Calculator -->
+  <div class="container-box shadow mt-5">
+    <h2 class="text-center mb-4">Motorcycle Fare Calculator</h2>
+    <form id="fareForm">
+      <div class="mb-3">
+        <label>Service Area</label>
+        <select class="form-select" id="line" required>
+          <option value="">Choose...</option>
+          <option value="North">North District</option>
+          <option value="Central">Central District</option>
+          <option value="South">South District</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label>Pickup Area</label>
+        <select class="form-select" id="pickup" required>
+          <option value="">Choose...</option>
+          <option value="North">North District</option>
+          <option value="Central">Central District</option>
+          <option value="South">South District</option>
+        </select>
+      </div>
+       <div class="mb-3">
+        <label>Destination Area</label>
+        <select class="form-select" id="destination" required>
+          <option value="">Choose...</option>
+          <option value="North">North District</option>
+          <option value="Central">Central District</option>
+          <option value="South">South District</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label>Passenger Type</label>
+        <select class="form-select" id="passengerType" required>
+          <option value="0">Regular</option>
+          <option value="0.2">Student</option>
+          <option value="0.2">Senior</option>
+          <option value="0.2">PWD</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-warning w-100">Calculate Fare</button>
+    </form>
+    <div id="result" class="mt-4 text-center fs-4 fw-bold"></div>
+  </div>
+
+  <!-- Fare Schedule Table -->
+  <div class="container-box shadow mt-5">
+    <h2 class="text-center mb-4">Service Area Schedule</h2>
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>Area</th>
+          <th>Pickup Point</th>
+          <th>Operating Hours</th>
+          <th>Frequency (mins)</th>
+        </tr>
+      </thead>
+      <tbody id="scheduleTable"></tbody>
+    </table>
+  </div>
+
+  <footer>
+    <p>Created by: Viktoria Camitan, Precious Dolormente</p>
+  </footer>
+
+  <script>
+  
+    var stations = {
+      North: ["North Gate","Riverfront","Market Area","University Road"],
+      Central: ["City Hall","Main Square","Central Park","Museum Road"],
+      South: ["Harbor","Tech Park","South Market","Stadium"]
+    };
+
+    var schedule = {
+      North: { hours: "6:00 AM - 11:00 PM", freq: 10 },
+      Central: { hours: "5:30 AM - 11:30 PM", freq: 8 },
+      South: { hours: "6:15 AM - 10:45 PM", freq: 12 }
+    };
+
+    
+    var tbody = document.getElementById("scheduleTable");
+    var areas = Object.keys(stations);
+    for (var i = 0; i < areas.length; i++) {
+      var area = areas[i];
+      var locs = stations[area];
+      for (var j = 0; j < locs.length; j++) {
+        tbody.innerHTML += "<tr><td>" + area + "</td><td>" + locs[j] + "</td><td>" + schedule[area].hours + "</td><td>" + schedule[area].freq + "</td></tr>";
+      }
+    }
+
+    // Populate pickup/destination options
+    document.getElementById("line").onchange = function() {
+      var area = this.value;
+      var pickup = document.getElementById("pickup");
+      var destination = document.getElementById("destination");
+      pickup.innerHTML = "<option value=''>Choose...</option>";
+      destination.innerHTML = "<option value=''>Choose...</option>";
+      var locs = stations[area];
+      for (var i = 0; i < locs.length; i++) {
+        pickup.innerHTML += "<option>" + locs[i] + "</option>";
+        destination.innerHTML += "<option>" + locs[i] + "</option>";
+      }
+    };
+
+    // Fare calculation 
+    document.getElementById("fareForm").onsubmit = function(e) {
+      e.preventDefault();
+      var baseFare = 40, perKM = 12;
+      var line = document.getElementById("line").value;
+      var pickup = document.getElementById("pickup").value;
+      var dest = document.getElementById("destination").value;
+      var type = parseFloat(document.getElementById("passengerType").value);
+
+      // Distance as absolute index difference * 2 km
+      var dist = Math.abs(stations[line].indexOf(dest) - stations[line].indexOf(pickup)) * 2;
+      var extra = Math.max(dist - 2, 0);
+      var fare = Math.round((baseFare + extra * perKM) * (1 - type));
+
+      document.getElementById("result").innerHTML =
+        "Area: " + line + "<br>" +
+        "Pickup: " + pickup + "<br>" +
+        "Destination: " + dest + "<br>" +
+        "Estimated Fare: ₱" + fare;
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Lunar Taxi Cycle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: url('https://wallpapers.com/images/hd/4k-ultra-hd-dark-teal-highway-7zbd70j0uhg7udmp.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #e0f7fa;
+        }
+        .navbar { background-color: #00796b; }
+        .registration-box {
+            background: rgba(0,77,77,0.85);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 80px auto;
+        }
+        .form-control { margin-bottom: 15px; }
+        .btn-warning { 
+            background-color: #26a69a !important; 
+            border: none; 
+            width: 100%; 
+            color: white !important; 
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="home.html">Sakay</a>
+  </div>
+</nav>
+
+<div class="registration-box shadow text-center">
+    <h2 class="mb-4">Create Account</h2>
+    <form id="regForm">
+        <input type="text" class="form-control" placeholder="Full Name" required>
+        <input type="email" class="form-control" placeholder="Email Address" required>
+        <input type="password" class="form-control" placeholder="Password" required>
+        
+        <button type="submit" class="btn btn-warning">Sign Up</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('regForm').onsubmit = function(e) {
+        e.preventDefault(); // Stop page refresh
+        
+        // Simple alert popup
+        alert("Account Successfully Created!\n\nWelcome to Sakay Motor Service. You can now schedule rides and calculate fares.");
+        
+        // Redirect to home after they click 'OK'
+        window.location.href = 'home.html';
+    };
+</script>
+
+</body>
+</html>

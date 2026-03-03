@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakay</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url("https://wallpapers.com/images/hd/4k-ultra-hd-dark-teal-highway-7zbd70j0uhg7udmp.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: #e0f7fa;
+    }
+
+    .navbar { background-color: #00796b; }
+    .nav-link { color: #b2dfdb; }
+
+    .navbar .btn-secondary {
+      background-color: #004d4d !important;
+      border-color: #004d4d !important;
+      color: #b2dfdb !important;
+    }
+    .navbar .btn-secondary:hover {
+      background-color: #00695c !important;
+      border-color: #00695c !important;
+      color: #ffffff !important;
+    }
+    .navbar .btn-warning {
+      background-color: #26a69a !important; 
+      border-color: #26a69a !important;
+      color: #e0f7fa !important;
+    }
+    .navbar .btn-warning:hover {
+      background-color: #009688 !important;
+      border-color: #009688 !important;
+      color: #ffffff !important;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 150px 20px;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(2px);
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 5px #000;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 5px #000;
+    }
+    .btn-hero {
+      background-color: #26a69a;
+      border-color: #26a69a;
+      color: #e0f7fa;
+      font-size: 1.2rem;
+      padding: 12px 30px;
+      transition: 0.3s;
+    }
+    .btn-hero:hover {
+      background-color: #009688;
+      color: #fff;
+    }
+
+    
+    .features {
+      margin: 80px auto;
+      max-width: 1000px;
+    }
+    .feature-card {
+      background: rgba(0, 77, 77, 0.85);
+      border-radius: 15px;
+      padding: 25px;
+      margin: 15px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    .feature-card i {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: #26a69a;
+    }
+    .feature-card h4 {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 1rem;
+    }
+
+    footer {
+      background-color: #004d4d;
+      color: #e0f7fa;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+ 
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="home.html">
+      <img src="sakay.png" alt="SAKAY Logo" style="height:50px; margin-right:10px;">
+      Sakay
+    </a>
+    <div>
+      <a href="home.html" class="btn btn-secondary">Home</a>
+      <a href="schedule.html" class="btn btn-warning">Fare & Routes</a>
+      <a href="help.html" class="btn btn-secondary">Help</a>
+      <a href="account.html" class="btn btn-warning"><i class="fa fa-user-plus"></i> Create Account</a>
+    </div>
+  </div>
+</nav>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Ride Fast. Ride Safe.</h1>
+    <p>Get on-demand motorcycle rides anywhere in the city. Affordable, reliable, and secure, sakay na!</p>
+    <a href="schedule.html" class="btn btn-hero"><i class="fa fa-motorcycle"></i> Calculate Your Fare</a>
+  </div>
+
+  
+  <div class="features row justify-content-center text-center">
+    <div class="col-md-4">
+      <div class="feature-card">
+        <i class="fa fa-bolt"></i>
+        <h4>Fast Rides</h4>
+        <p>Motorcycles ready near you to get you to your destination in minutes.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-card">
+        <i class="fa fa-money-bill-wave"></i>
+        <h4>Affordable</h4>
+        <p>Transparent pricing with no hidden fees. Pay only what you see.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-card">
+        <i class="fa fa-shield-alt"></i>
+        <h4>Safe Drivers</h4>
+        <p>All riders are trained, verified, and follow strict safety protocols.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Created by: Viktoria Camitan, Precious Dolormente</p>
+  </footer>
+
+  <script>
+    var navButtons = document.querySelectorAll('.navbar .btn');
+    for (var i = 0; i < navButtons.length; i++) {
+      var btn = navButtons[i];
+      if (btn.textContent.trim() === "Help") {
+        btn.textContent = "Registration";
+        btn.href = "registration.html";
+      }
+    }
+  </script>
+
+</body>
+</html>

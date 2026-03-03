@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakay</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body{
+      background-image: url("https://wallpapers.com/images/hd/4k-ultra-hd-dark-teal-highway-7zbd70j0uhg7udmp.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      color: #e0f7fa;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .navbar { 
+      background-color: #00796b; 
+    }
+    .nav-link { 
+      color: #b2dfdb; 
+    }
+
+    /* Navbar Buttons */
+    .navbar .btn-secondary {
+      background-color: #004d4d !important;
+      border-color: #004d4d !important;
+      color: #b2dfdb !important;
+    }
+    .navbar .btn-secondary:hover {
+      background-color: #00695c !important;
+      border-color: #00695c !important;
+      color: #ffffff !important;
+    }
+    .navbar .btn-warning {
+      background-color: #26a69a !important;
+      border-color: #26a69a !important;
+      color: #e0f7fa !important;
+    }
+    .navbar .btn-warning:hover {
+      background-color: #009688 !important;
+      border-color: #009688 !important;
+      color: #ffffff !important;
+    }
+
+    .form-box{
+      background-color: rgba(0,77,77,0.7);
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 50px;
+      color: #e0f7fa;
+    }
+
+    .form-label {
+      font-weight: bold;
+    }
+
+    input.form-control, input[type="file"] {
+      background-color: rgba(0,100,100,0.2);
+      border: 1px solid #004d4d;
+      color: #e0f7fa;
+    }
+
+    input.form-control::placeholder {
+      color: #b2dfdb;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    button.btn-primary {
+      background-color: #26a69a !important;
+      border-color: #26a69a !important;
+      color: #e0f7fa !important;
+    }
+
+    button.btn-primary:hover {
+      background-color: #009688 !important;
+      color: #fff !important;
+    }
+
+    footer{
+      text-align: center;
+      width: 100%;
+      margin-top: 50px;
+      padding: 15px 0;
+      color: #e0f7fa;
+      background-color: #004d4d;
+    }
+
+    img.rounded-circle {
+      border: 2px solid #26a69a;
+    }
+  </style>
+</head>
+<body>
+
+ <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="home.html">
+      <img src="sakay.png" alt="SAKAY Logo" style="height:50px; margin-right:10px;">
+      Sakay
+    </a>
+    <div>
+      <a href="home.html" class="btn btn-secondary">Home</a>
+      <a href="schedule.html" class="btn btn-warning">Fare & Routes</a>
+      <a href="registration.html" class="btn btn-secondary">Registration</a>
+      <a href="account.html" class="btn btn-warning"><i class="fa fa-user-plus"></i> Create Account</a>
+    </div>
+  </div>
+</nav>
+
+  <!-- Registration Form -->
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="form-box">
+        <h3 class="text-center mb-4">Log in</h3>
+        <form>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" placeholder="Enter first name">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" placeholder="Enter last name">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Phone Number</label>
+                <input type="text" class="form-control" placeholder="Enter phone number">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Username / Email</label>
+                <input type="email" class="form-control" placeholder="Enter email">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" placeholder="Enter password">
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="terms">
+                <label class="form-check-label" for="terms">I have read and agree to the Terms and Conditions.</label>
+              </div>
+            </div>
+            <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+              <img width="130" height="130" src="https://cdn-icons-png.flaticon.com/512/12225/12225935.png" class="rounded-circle mb-3">
+              <input type="file" class="form-control mt-2">
+            </div>
+          </div>
+          <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary w-50">Create Account</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Created by: Viktoria Camitan, Precious Dolormente</p>
+</footer>
+
+<script>
+  var navButtons = document.querySelectorAll('.navbar .btn');
+  for (var i = 0; i < navButtons.length; i++) {
+    var btn = navButtons[i];
+    if (btn.textContent.trim() === "Help") {
+      btn.textContent = "Registration";
+      btn.href = "registration.html";
+    }
+  }
+</script>
+
+</body>
+</html>
